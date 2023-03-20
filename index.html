@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>To Do List</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>To Do List</h1>
+
+      <section>
+        <div class="not-started">
+          <h2 class="h2">Not Started</h2>
+
+          <form action="">
+            <input
+              type="text"
+              id="name"
+              class="task"
+              name="name"
+              required
+              placeholder="Task name"
+            />
+          </form>
+          <ul>
+            <li class="not-started-li">
+              <div class="task-icons-container">
+                <!-- <button class="bt-not-started">
+                  <ion-icon name="create-outline" class="edit"></ion-icon>
+                </button>
+                <button class="bt-not-started">
+                  <ion-icon name="trash-outline" class="trash"></ion-icon>
+                </button> -->
+                <button class="bt-not-started">
+                  <p class="add">ADD</p>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- /* In Progress */ -->
+        <div class="in-progress">
+          <h2 class="h2">In Progress</h2>
+
+          <form action="">
+            <input
+              type="text"
+              id="name"
+              class="task"
+              name="name"
+              required
+              placeholder="Task name"
+            />
+          </form>
+          <ul>
+            <li class="in-progress-li">
+              <div class="task-icons-container">
+                <!-- <button class="bt-not-started">
+                  <ion-icon name="create-outline" class="edit"></ion-icon>
+                </button>
+                <button class="bt-not-started">
+                  <ion-icon name="trash-outline" class="trash"></ion-icon>
+                </button> -->
+                <button class="bt-in-progress-li">
+                  <p class="add">ADD</p>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Completed  -->
+        <div class="in-progress">
+          <h2 class="h2">In Progress</h2>
+
+          <form action="">
+            <input
+              type="text"
+              id="name"
+              class="task"
+              name="name"
+              required
+              placeholder="Task name"
+            />
+          </form>
+          <ul>
+            <li class="completed-li">
+              <div class="task-icons-container">
+                <!-- <button class="bt-not-started">
+                  <ion-icon name="create-outline" class="edit"></ion-icon>
+                </button>
+                <button class="bt-not-started">
+                  <ion-icon name="trash-outline" class="trash"></ion-icon>
+                </button> -->
+                <button class="bt-completed-li">
+                  <p class="add">ADD</p>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
