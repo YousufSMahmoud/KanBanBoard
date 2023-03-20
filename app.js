@@ -65,7 +65,6 @@ let data = [];
 if (window.localStorage.data) {
   data = JSON.parse(localStorage.data);
   for (i of data) {
-    console.log(i.parentId, i.title);
     addTaskToHTML(i.parentId, i.title);
   }
   //for (column of JSON.parse(window.localStorage.data).map((a) => a.parentId)) {
@@ -169,7 +168,6 @@ columns.forEach((column) => {
 function removeTaskEvent() {
   [...tasksList].forEach((t) => {
     if (t.firstChild != null) {
-      console.log(t);
       t.addEventListener("click", (e) => {
         if (e.target.classList.contains("trash")) {
           // d.push(
@@ -246,7 +244,6 @@ function addTask(id) {
 
 function helperForAddTask(tasks) {
   for (i of tasks.children) {
-    console.log(ifTitleInData(i), i.firstChild.value);
     if (ifTitleInData(i)) {
       const task = {
         id: `task-${number}`,
@@ -277,6 +274,9 @@ function updateHTML() {
   }
 }
 
+console.log(
+  "If you know what are you doing, please Join us at Albonian Almarsus"
+);
 // updateHTML();
 //
 
