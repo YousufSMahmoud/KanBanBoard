@@ -165,33 +165,32 @@ columns.forEach((column) => {
   });
 });
 
-function removeTaskEvent() {
-  [...tasksList].forEach((t) => {
-    if (t.firstChild != null) {
-      t.addEventListener("click", (e) => {
-        if (e.target.classList.contains("trash")) {
-          // d.push(
-          //   JSON.stringify(e.target.parentElement.parentElement.parentElement)
-          // );
-          localStorage.removeItem(
-            e.target.parentElement.parentElement.parentElement
-          );
+// function removeTaskEvent() {
+[...tasksList].forEach((t) => {
+  if (t.firstChild != null) {
+    t.addEventListener("click", (e) => {
+      if (e.target.classList.contains("trash")) {
+        // d.push(
+        //   JSON.stringify(e.target.parentElement.parentElement.parentElement)
+        // );
+        localStorage.removeItem(
+          e.target.parentElement.parentElement.parentElement
+        );
 
-          data = data.filter(
-            (a) =>
-              a.title !=
-              e.target.parentElement.parentElement.parentElement.firstChild
-                .value
-          );
+        data = data.filter(
+          (a) =>
+            a.title !=
+            e.target.parentElement.parentElement.parentElement.firstChild.value
+        );
 
-          e.target.parentElement.parentElement.parentElement.remove();
-          save();
-        }
-      });
-    }
-  });
-}
-removeTaskEvent();
+        e.target.parentElement.parentElement.parentElement.remove();
+        save();
+      }
+    });
+  }
+});
+// }
+// removeTaskEvent();
 // local storage
 
 function read() {
