@@ -42,8 +42,9 @@ h1 {
   background: white;
   cursor: move;
   z-index: 2;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0.1rem 0.2rem 0.4rem,
+    rgba(0, 0, 0, 0.23) 0.1rem 0.2rem 0.4rem;
+  padding: 0.1rem;
   background: transparent;
 }
 
@@ -130,4 +131,6 @@ input {
 .tasks-list {
   /* min-height: 2rem;
   background-color: yellow; */
+  min-height: 0.5rem;
+  min-width: 1rem;
 }

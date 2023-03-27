@@ -12,12 +12,10 @@ const columns = [
     tasks: [],
   },
 ];
+let index = 0;
+let allInput = document.querySelectorAll(".tasks-input");
 
 function addTaskToHTML(id, value) {
-  // columns.forEach((column) => {
-  //   const addTaskBtn = document.getElementsByTagName("button")[column.id];
-  //   addTaskBtn.addEventListener("click", (foo) => {});
-  // });
   let zero = document.getElementById(0);
   let one = document.getElementById(1);
   let two = document.getElementById(2);
@@ -38,7 +36,9 @@ function addTaskToHTML(id, value) {
   taskInput.className = "task";
   input.type = "text";
   // input.draggable = "true";
-  input.className = "task-input";
+  input.className = "tasks-input";
+  input.id = "tasks-input";
+
   input.value = value;
   taskInput.style.cursor = "auto";
   iconsContainer.append(editButton);
@@ -67,63 +67,21 @@ if (window.localStorage.data) {
   for (i of data) {
     addTaskToHTML(i.parentId, i.title);
   }
-  //for (column of JSON.parse(window.localStorage.data).map((a) => a.parentId)) {
-  //  const addTaskBtn = document.querySelectorAll(".button-add")[column];
-  // let tasksList = document.querySelectorAll(".tasks-list")[column];
-
-  // addTaskBtn.addEventListener("click", (foo) => {
-  //   const taskInput = document.createElement("div");
-  //   const input = document.createElement("input");
-  //   const iconsContainer = document.createElement("div");
-  //   iconsContainer.className = "icons-container";
-  //   const editButton = document.createElement("button");
-  //   editButton.className = "btn-edit";
-  //   const trashButton = document.createElement("button");
-  //   trashButton.className = "btn-trash";
-
-  //   editButton.innerHTML += `<ion-icon name="create-outline" class="edit"></ion-icon>`;
-  //   trashButton.innerHTML += `<ion-icon name="trash-outline" class="trash"></ion-icon>
-  //   `;
-
-  //   taskInput.className = "task";
-  //   input.type = "text";
-  //   input.className = "task-input";
-  //   taskInput.style.cursor = "auto";
-  //   iconsContainer.append(editButton);
-  //   iconsContainer.append(trashButton);
-  //   taskInput.append(input);
-  //   taskInput.append(iconsContainer);
-  //   tasksList.append(taskInput);
-  //   // console.log(tasksList, "hi");
-  //   // data.push(taskInput.outerHTML);
-  //   window.localStorage.setItem("data", JSON.stringify(data));
-  //   addTask(column.id);
-  //   save();
-  //   updateData();
-
-  //   number++;
-
-  //   // if (input.value != "") {
-  //   //   console.log(input.value);
-  //   // }
-  // });
-  //}
 }
 
 number = 1;
 
-const trashBtn = document.querySelectorAll(".btn-trash");
+const trashBtn = document.getElementsByClassName(".btn-trash");
 let tasksList = document.querySelectorAll(".tasks-list");
 const container = document.querySelector(".container");
 let dragContainer = document.querySelectorAll(".column");
+let addTaskBtn = document.querySelectorAll(".button-add");
 
-trashBtn.forEach((trash) => {});
-// const data = [];
 let columnId = document.querySelectorAll(".column");
 
 columns.forEach((column) => {
   let tasksList = document.querySelectorAll(".tasks-list")[column.id];
-  const addTaskBtn = document.querySelectorAll(".button-add")[column.id];
+  let addTaskBtn = document.querySelectorAll(".button-add")[column.id];
 
   addTaskBtn.addEventListener("click", (foo) => {
     const taskInput = document.createElement("div");
@@ -155,9 +113,10 @@ columns.forEach((column) => {
     // data.push(taskInput.outerHTML);
     addTask(column.id);
     save();
-    updateData();
+    // updateData();
 
     number++;
+    allInput = document.querySelectorAll(".tasks-input");
 
     // if (input.value != "") {
     //   console.log(input.value);
@@ -241,6 +200,18 @@ function addTask(id) {
   }
 }
 
+function dragIndex(task, parentId) {
+  if (parentId == 0) {
+    task.index = index;
+  }
+  if (parentId == 1) {
+    task.index = index;
+  }
+  if (parentId == 2) {
+    task.index = index;
+  }
+  index++;
+}
 function helperForAddTask(tasks) {
   for (i of tasks.children) {
     if (ifTitleInData(i)) {
@@ -249,8 +220,11 @@ function helperForAddTask(tasks) {
         title: i.firstChild.value,
         parentId: i.parentElement.id,
       };
+
       // console.log(task);
       if (task.title != undefined) {
+        dragIndex(i, +i.parentId);
+
         data.push(task);
       }
     }
@@ -267,11 +241,11 @@ function ifTitleInData(input, id) {
   return true;
 }
 
-function updateHTML() {
-  for (i of data) {
-    console.log(i);
-  }
-}
+// function updateHTML() {
+//   for (i of data) {
+//     console.log(i);
+//   }
+// }
 
 console.log(
   "If you know what are you doing, please Join us at Albonian Almarsus"
@@ -281,27 +255,38 @@ console.log(
 
 // dragging logic
 
-// const allInput = document.getElementsByClassName(".task");
-// tasksList.forEach((t) => {
-//   t.addEventListener("dragstart", () => {
-//     t.classList.add("dragging");
-//     console.log("start");
-//   });
-// });
-
+// // addTaskBtn.onclick = function( {
+// //   if()
+// // })
 // let draggable;
-// tasksList.forEach((t) => {
-//   t.addEventListener("dragend", () => {
-//     draggable = document.querySelector(".dragging");
+// let drag = null;
+// function dragItem() {
+//   let;
+// }
+tasks = document.querySelectorAll(".task");
 
-//     t.classList.remove("dragging");
-//   });
-// });
-// dragContainer.forEach((column) => {
-//   column.addEventListener("dragover", (e) => {
-//     e.preventDefault();
-//     // const draggable = document.querySelector(".dragging");
-//     console.log(column.children[1]);
-//     // column.children[1].appendChild(draggable);
-//   });
-// });
+tasks.forEach((t) => {
+  t.addEventListener("dragstart", () => {
+    t.classList.add("dragging");
+    // console.log(drag, "dragstart");
+  });
+});
+
+tasks.forEach((t) => {
+  t.addEventListener("dragend", () => {
+    draggable = document.querySelector(".dragging");
+    t.classList.remove("dragging");
+    // console.log(draggable, t);
+  });
+});
+
+tasksList.forEach((column) => {
+  column.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const draggable = document.querySelector(".dragging");
+    column.appendChild(draggable);
+
+    // column.children[1].appendChild(draggable);
+    // console.log(e.target.parentElement, column);
+  });
+});
